@@ -1,12 +1,18 @@
 # wenqusec.com
 
-问渠安全实验室官网静态源码归档。
+问渠安全实验室官网源码归档。
 
 > 问渠清如许，安全活水来。
 
 ## 内容
 
-本仓库当前内容来自 `https://wenqusec.com/` 公开站点的静态资源镜像，包含首页 HTML、CSS、JavaScript、字体和同域图片资源。
+本仓库当前内容同步自阿里云服务器线上目录：
+
+```text
+/www/wwwroot/wenqusec.com
+```
+
+包含首页 HTML、CSS、JavaScript、字体、图片、站点运行配置与静态资源文件。
 
 外部链接与外部图床资源保持原样，例如：
 
@@ -23,7 +29,9 @@
 ├── css/
 ├── js/
 ├── images/
-└── fonts/
+├── fonts/
+├── .well-known/
+└── .user.ini
 ```
 
 ## 本地预览
@@ -42,10 +50,9 @@ http://127.0.0.1:8080/
 
 ## 后续同步
 
-如果需要从阿里云服务器同步原始工程目录，请使用服务器上的真实源码目录覆盖本仓库后重新提交。当前本地可见 SSH 记录为：
+后续如需更新，以服务器线上目录为准重新同步后提交：
 
-```text
-ssh peiyimiao@39.107.90.4 -p 4257
+```bash
+rsync -a --delete --exclude '.git' --exclude 'README.md' --exclude '.nojekyll' \
+  /path/to/wenqusec.com/ ./
 ```
-
-但本机没有可用的免密身份，因此本次先提交公开站点静态镜像。
